@@ -1,1 +1,32 @@
-<p>list-category works!</p>
+<div class="container mt-3">
+    <h1 class="text-center">Quản lý danh mục</h1>
+    <button type="button" class="btn btn-outline-success me-3" data-bs-toggle="modal" data-bs-target="#modalAdd">
+      Thêm danh mục mới
+    </button>
+    <table class="table table-bordered text-center mt-3">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Tên danh mục</th>
+          <th scope="col">Mô tả</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of categories; track $index) {
+        <tr>
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>
+            <button type="button" class="btn btn-warning me-3" data-bs-toggle="modal" data-bs-target="#modalEdit" (click)="setCategory(item)">
+              Chỉnh sửa
+            </button>
+            <div class="btn btn-danger">Xóa</div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  <app-add-category [reloadData]="reloadData"></app-add-category>
+  </div>
