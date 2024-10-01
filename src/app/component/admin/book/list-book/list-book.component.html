@@ -1,0 +1,44 @@
+<div class="container mt-3">
+  <h1 class="text-center">Quản lý sách</h1>
+  <button type="button" class="btn btn-outline-success me-3" data-bs-toggle="modal" data-bs-target="#modalAdd">
+    Thêm sách mới
+  </button>
+  <table class="table table-bordered text-center mt-3">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Tiêu đề</th>
+        <th scope="col">Tác giả</th>
+        <th scope="col">Danh mục</th>
+        <th scope="col">Giá</th>
+        <th scope="col">Số lượng</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of books; track $index) {
+      <tr>
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.title}}</td>
+        <td>{{item.author}}</td>
+        <td>{{item.category_name}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.stock}}</td>
+        <td>
+          <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#modalDetail" (click)="setBook(item)">
+            Xem chi tiết
+          </button>
+          <button type="button" class="btn btn-warning me-3" data-bs-toggle="modal" data-bs-target="#modalEdit" (click)="setBook(item)">
+            Chỉnh sửa
+          </button>
+          <div class="btn btn-danger" (click)="deleteBook(item.id)">Xóa</div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <app-detail-book [book]="selectedBook"></app-detail-book>
+  <app-edit-book [book]="selectedBook"></app-edit-book>
+  <app-add-book [reloadData]="reloadData"></app-add-book>
+</div>
