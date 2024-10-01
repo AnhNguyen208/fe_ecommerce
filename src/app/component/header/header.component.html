@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/home">Trang chủ</a>
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Trang chủ</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
@@ -16,16 +16,16 @@
                         Quản lý
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" routerLink="['/home']">Danh mục</a></li>
-                        <li><a class="dropdown-item" routerLink="['/books']">Sách</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/categories']">Danh mục</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/books']">Sách</a></li>
                         <li><a class="dropdown-item">Đơn hàng</a></li>
                     </ul>
                 </li>
             </ul>
             <div>
-                <div class="btn btn-primary me-1">Giỏ hàng</div>
-                <div class="btn btn-primary me-1">Đăng ký</div>
-                <div class="btn btn-primary me-1">Đăng nhập</div>
+                <div class="btn btn-primary me-2">Giỏ hàng</div>
+                <div class="btn btn-primary me-2">Đăng ký</div>
+                <div class="btn btn-primary me-2">Đăng nhập</div>
             </div>
         </div>
     </div>
