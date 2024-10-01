@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../../../../model/category';
 import { CategoryService } from '../../../../service/category/category.service';
 import { AddCategoryComponent } from '../add-category/add-category.component';
+import { EditCategoryComponent } from '../edit-category/edit-category.component';
 
 @Component({
   selector: 'app-list-category',
   standalone: true,
-  imports: [AddCategoryComponent],
+  imports: [AddCategoryComponent, EditCategoryComponent],
   templateUrl: './list-category.component.html',
   styleUrl: './list-category.component.scss'
 })
