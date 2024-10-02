@@ -1,1 +1,22 @@
-<p>login works!</p>
+<div class="container mt-3">
+    <h1 class="text-center">Đăng nhập</h1>
+    <form class="w-50 mx-auto" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col ms-auto">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input class="form-control" id="username" formControlName="username" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col ms-auto">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" type="password" formControlName="password" />
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3" type="submit">Login</button>
+    </form>
+</div>
