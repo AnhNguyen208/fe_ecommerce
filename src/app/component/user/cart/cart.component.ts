@@ -29,7 +29,10 @@ export class CartComponent implements OnInit{
   }
 
   deleteItem(id: number) {
-
+    this.cartService.delete(id).subscribe((data) => {
+      this.getItems();
+      this.updateCart();
+    })
   }
 
   updateItem(id: number, quantity: number) {

@@ -14,6 +14,12 @@ export class CartService {
     return this.http.get<any>(this.apiUrl);
   }
 
+  add(id: number): Observable<any> {
+    return this.http.post<any>(this.apiUrl, {
+      book_id: id,
+    })
+  }
+
   update(id: number, quantity: number): Observable<any> {
     return this.http.put<any>(this.apiUrl, {
       book_id: id,

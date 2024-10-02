@@ -5,6 +5,7 @@ import { BookService } from '../../../service/book/book.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { DetailBookComponent } from '../../admin/book/detail-book/detail-book.component';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../../service/cart/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomeComponent {
   selectedBook: Book = new Book(0, "", "", "", 0, 0, 0, "", "", 0, "");
   keyword: string = "";
 
-  constructor(private bookService: BookService, private categoryService: CategoryService) { }
+  constructor(private bookService: BookService, private categoryService: CategoryService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -60,6 +61,13 @@ export class HomeComponent {
         this.books = data.result;
       });
     }
+  }
+
+  addToCart(id: number) {
+    this.cartService.add(id).subscribe((data) => {
+      console.log(data);
+      alert("Thêm vào giỏ hàng thành công!!!")
+    })
   }
 
 }
