@@ -1,1 +1,36 @@
-<p>cart works!</p>
+<div class="container mt-3">
+    <h1 class="text-center">Giỏ hàng</h1>
+    <table class="table table-bordered text-center mt-3">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tên sách</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Thành tiền</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of items; track item; let idx = $index) {
+            <tr>
+                <th scope="row">{{idx + 1}}</th>
+                <td>{{item.title}}</td>
+                <td>{{item.price}}</td>
+                <td><input type="number" [(ngModel)]="item.quantity" (ngModelChange)="setQuantity(item.book_id, item.quantity)"
+                    min="1"/></td>
+                <td>{{item.price * item.quantity}}$</td>
+                <td>
+                    <div class="btn btn-warning me-3" (click)="updateItem(item.book_id, item.quantity)">
+                        Cập nhật
+                    </div>
+                    <div class="btn btn-danger" (click)="deleteItem(item.book_id)">Xóa</div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <p><strong>Tổng tiền: </strong>{{totalAmount}}$</p>
+    
+</div>
