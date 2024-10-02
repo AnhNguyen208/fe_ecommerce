@@ -1,8 +1,8 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="d-flex w-50 m-auto">
-      <input class="form-control me-2 w-75" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+      <input class="form-control me-2 w-75" type="search" [(ngModel)]="keyword" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit" (click)="search()">Tìm kiếm</button>
     </div>
     <div class="row mt-3">
       <div class="col-3">

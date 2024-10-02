@@ -4,11 +4,12 @@ import { Category } from '../../../model/category';
 import { BookService } from '../../../service/book/book.service';
 import { CategoryService } from '../../../service/category/category.service';
 import { DetailBookComponent } from '../../admin/book/detail-book/detail-book.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DetailBookComponent],
+  imports: [DetailBookComponent, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -17,6 +18,7 @@ export class HomeComponent {
   categories: Category[] = [];
   selectedCategory: number = -1;
   selectedBook: Book = new Book(0, "", "", "", 0, 0, 0, "", "", 0, "");
+  keyword: string = "";
 
   constructor(private bookService: BookService, private categoryService: CategoryService) { }
 
@@ -51,4 +53,13 @@ export class HomeComponent {
   setBook(book: Book): void {
     this.selectedBook = book;
   }
+
+  search(): void {
+    if(this.keyword !== "") {
+      this.bookService.search(this.keyword).subscribe((data) => {
+        this.books = data.result;
+      });
+    }
+  }
+
 }
